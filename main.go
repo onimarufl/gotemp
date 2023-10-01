@@ -14,6 +14,7 @@ func main() {
 	handler := handler.NewHandler(service)
 
 	r.GET("/getMessage", handler.HandlerGetMessage)
+	r.POST("/postService", handler.HandlerPostService)
 
 	r.Run()
 }

@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"gotemp/model"
 	"gotemp/service"
 	"net/http"
 
@@ -19,6 +20,18 @@ func (h Handler) HandlerGetMessage(c *gin.Context) {
 	message := c.Query("message")
 
 	resp := h.service.GetMessage(message)
+
+	c.JSON(http.StatusOK, resp)
+}
+
+func (h Handler) HandlerPostService(c *gin.Context) {
+	req := model.Request{}
+	c.Bind(&req)
+
+	resp, err := h.service.PostService(req)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, err)
+	}
 
 	c.JSON(http.StatusOK, resp)
 }
