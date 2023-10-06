@@ -24,7 +24,7 @@ func NewService(repository repository.Repository) service {
 }
 
 func (s service) GetMessage(message string) string {
-
+fmt.Println("meesage: ",message)
 	return "Get " + message
 }
 
